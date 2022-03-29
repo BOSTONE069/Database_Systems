@@ -20,25 +20,31 @@ e1 = Entry(win, textvariable=date_text)
 e1.grid(row=0,column=1)
 
 earnings_text = StringVar()
-e1 = Entry(win, textvariable=earnings_text)
-e1.grid(row=0,column=1)
+e2 = Entry(win, textvariable=earnings_text)
+e2.grid(row=0,column=3)
 
 excercise_text = StringVar()
-e1 = Entry(win, textvariable=excercise_text)
-e1.grid(row=0,column=1)
+e3 = Entry(win, textvariable=excercise_text)
+e3.grid(row=1,column=1)
 
 study_text = StringVar()
-e1 = Entry(win, textvariable=study_text)
-e1.grid(row=0,column=1)
+e4 = Entry(win, textvariable=study_text)
+e4.grid(row=1,column=3)
 
 diet_text = StringVar()
-e1 = Entry(win, textvariable=diet_text)
-e1.grid(row=0,column=1)
+e5 = Entry(win, textvariable=diet_text)
+e5.grid(row=2,column=1)
 
 python_text = StringVar()
-e1 = Entry(win, textvariable=python_text)
-e1.grid(row=0,column=1)
+e6 = Entry(win, textvariable=python_text)
+e6.grid(row=2,column=3)
+
+list = Listbox(win,height=8,width=35)
+list.grid(row=3,column=0,rowspan=9,columnspan=2)
+
+sb = Scrollbar(win)
+sb.grid(row=3,column=2,rowspan=9)
 
 
-
+list.bind('<<ListboxSelection>>',get_selected_row)
 win.mainloop()
