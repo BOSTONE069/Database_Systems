@@ -1,7 +1,13 @@
 from tkinter import *
 
-win = Tk()
+def get_selected_row():
+    pass
 
+win = Tk()
+ 
+win.wm_title('MY ROUTINE DATABSE')
+
+#This is for defining the labels of the systems
 l1 = Label(win, text='Date')
 l1.grid(row=0,column=0)
 l2 = Label(win, text='Earnings')
@@ -15,6 +21,7 @@ l5.grid(row=2,column=0)
 l6 = Label(win, text='Python')
 l6.grid(row=2,column=2)
 
+#This is for defining the data entry boxes in the system
 date_text = StringVar()
 e1 = Entry(win, textvariable=date_text)
 e1.grid(row=0,column=1)
@@ -47,4 +54,21 @@ sb.grid(row=3,column=2,rowspan=9)
 
 
 list.bind('<<ListboxSelection>>',get_selected_row)
+
+#This is for defining the buttons to be used in the project        
+b1 = Button(win,text='ADD',width=12,pady=5)
+b1.grid(row=3,column=3)
+
+b2 = Button(win,text='Search',width=12,pady=5)
+b2.grid(row=4,column=3)
+
+b3 = Button(win, text='Delete Date', width=12, pady=5)
+b3.grid(row=5, column=3)
+
+b4 = Button(win, text='View All', width=12, pady=5)
+b4.grid(row=6, column=3)
+
+b5 = Button(win,text='Close',width=12,pady=5,command = win.destroy)
+b5.grid(row=7,column=3)
+    
 win.mainloop()
