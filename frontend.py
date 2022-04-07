@@ -34,10 +34,8 @@ def search_command():
 
 def add_command():
     backend.insert(date_text.get(), earnings_text.get(), exercise_text.get(), study_text.get(), diet_text.get(), python_text.get())
-    
     list.delete(0,END)
-    list.insert(END, (date_text.get(), earnings_text.get(), exercise_text.get(
-    ), study_text.get(), diet_text.get(), python_text.get()))
+    list.insert(END, (date_text.get(), earnings_text.get(), exercise_text.get(), study_text.get(), diet_text.get(), python_text.get()))
 win = Tk()
 
 win.wm_title('MY ROUTINE DATABSE')
