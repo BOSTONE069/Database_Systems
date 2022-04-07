@@ -2,7 +2,25 @@ from tkinter import *
 import backend
 
 def get_selected_row():
-    pass
+    global selected_row
+    index = list.curselection()[0]
+    selected_row = list.get(index)
+    e1.delete(0,END)
+    e1.insert(END,selected_row[1])
+    e2.delete(0,END)
+    e2.insert(END,selected_row[2])
+    e3.delete(0,END)
+    e3.insert(END,selected_row[3])
+    e4.delete(0,END)
+    e4.insert(END,selected_row[4])
+    e5.delete(0,END)
+    e5.insert(END,selected_row[5])
+    e6.delete(0,END)
+    e6.insert(END,selected_row[6])
+    
+    
+def delete_command():
+    backend.delete(selected_row[0])
 
 def view_command():
     list.delete(0,END)
@@ -13,6 +31,13 @@ def search_command():
     list.delete(0,END)
     for row in backend.search(date_text.get(), earnings_text.get(), exercise_text.get(), study_text.get(), diet_text.get(), python_text.get()):
         list.insert(END,row)
+
+def add_command():
+    backend.insert(date_text.get(), earnings_text.get(), exercise_text.get(), study_text.get(), diet_text.get(), python_text.get())
+    
+    list.delete(0,END)
+    list.insert(END, (date_text.get(), earnings_text.get(), exercise_text.get(
+    ), study_text.get(), diet_text.get(), python_text.get()))
 win = Tk()
 
 win.wm_title('MY ROUTINE DATABSE')
@@ -66,13 +91,13 @@ sb.grid(row=3,column=2,rowspan=9)
 list.bind('<<ListboxSelection>>',get_selected_row)
 
 #This is for defining the buttons to be used in the project
-b1 = Button(win,text='ADD',width=12,pady=5)
+b1 = Button(win,text='ADD',width=12,pady=5,command=add_command)
 b1.grid(row=3,column=3)
 
 b2 = Button(win,text='Search',width=12,pady=5,command=search_command)
 b2.grid(row=4,column=3)
 
-b3 = Button(win, text='Delete Date', width=12, pady=5)
+b3 = Button(win, text='Delete Date', width=12, pady=5, command=delete_command)
 b3.grid(row=5, column=3)
 
 b4 = Button(win, text='View All', width=12, pady=5, command=view_command)
