@@ -1,7 +1,7 @@
 from tkinter import *
 import backend
 
-def get_selected_row():
+def get_selected_row(event):
     global selected_row
     index = list.curselection()[0]
     selected_row = list.get(index)

@@ -3,7 +3,7 @@ import sqlite3
 def connect():
     conn = sqlite3.connect('routine.db')
     cur = conn.cursor()
-    cur.execute("CREATE TABLE IF NOT EXISTS routine(Id INTEGER PRIMARY KEY, data TEXT, earnings INTEGER, exercise TEXT, study TEXT, diet TEXT, python TEXT)")
+    cur.execute("CREATE TABLE IF NOT EXISTS routine(Id INTEGER PRIMARY KEY, date TEXT, earnings INTEGER, exercise TEXT, study TEXT, diet TEXT, python TEXT)")
     conn.commit()
     conn.close()
 
@@ -23,18 +23,17 @@ def view():
     conn.close()
     return rows
 
-def delete():
+def delete(id):
     conn = sqlite3.connect('routine.db')
     cur = conn.cursor()
-    cur.execute("DELETE FROM routine WHERE id=?", (id,)))
+    cur.execute("DELETE FROM routine WHERE id=?", (id,))
     conn.commit()
     conn.close()
 
 def search(date='' , earnings='', exercise='' , study='', diet='' , python=''):
     conn=sqlite3.connect('routine.db')
     cur=conn.cursor()
-    cur.execute("SELECT * FROM routine WHERE date=? OR earnings=? OR exercise=? OR study=? OR diet=? OR python=?",
-    (date, earnings, exercise, study, diet, python))
+    cur.execute("SELECT * FROM routine WHERE date=? OR earnings=? OR exercise=? OR study=? OR diet=? OR python=?", (date, earnings, exercise, study, diet, python))
     rows=cur.fetchall()
     conn.commit()
     conn.close()
